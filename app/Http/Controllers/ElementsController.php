@@ -89,6 +89,12 @@ class ElementsController extends Controller
         'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     ];
 
+    protected $heights = [
+        '50',
+        '100',
+        '150'
+    ];
+
     public function index(Request $request)
     {
         $action = $this->actions[array_rand($this->actions)];
@@ -128,6 +134,7 @@ class ElementsController extends Controller
 
         if ($action == 'create' && $tag == 'img') {
             $response['properties']['src'] = $this->images[array_rand($this->images)];
+            $response['properties']['height'] = $this->heights[array_rand($this->heights)];
         }
 
         return response()->json($response);
